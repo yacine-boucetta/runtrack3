@@ -9,14 +9,20 @@
     <script type="text/javascript" src="script.js"></script>
 </head>
 
+
 <body>
-    <form method="post" >
-        <input type=email name="email">type</input>
-        <input type=password name="password">type</input>
-
-
-    </form>
-    <p></p>
+    <header>
+        <?php if (!isset($_SESSION['user'])) {?>
+       <a href=inscription.php>inscription</a>
+       <a href=connexion.php>connexion</a>
+       <?php } ?>
+</header>
+    <p><?php if (isset($_SESSION['user'])) {
+            echo "bonjour" . $prenom;
+        }
+        $prenom ?>
+    <p>
+    
 </body>
 
 </html>

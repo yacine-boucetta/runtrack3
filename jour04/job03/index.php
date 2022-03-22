@@ -10,13 +10,37 @@
 </head>
 
 <body>
-    <form method="post" >
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    id
+                </th>
+                <th>
+                    name french
+                </th>
+                <th>
+                    name english
+                </th>
+                <th>
+                    name japanese
+                </th>
+                <th>
+                    name chinese
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <form method="post">
         <input type=text name="id">id</input>
         <input type=text name="nom">nom</input>
-        <input type=select name="type">type</input>
-        <button id='button' >filtrer</button>
+
+        <select id='type' placeholder='type'></select>
+        <button id='button' type="button">filtrer</button>
     </form>
-    <p></p>
+
 </body>
 
 </html>
