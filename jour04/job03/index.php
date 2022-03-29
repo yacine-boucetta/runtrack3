@@ -9,37 +9,20 @@
     <script type="text/javascript" src="script.js"></script>
 </head>
 
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    id
-                </th>
-                <th>
-                    name french
-                </th>
-                <th>
-                    name english
-                </th>
-                <th>
-                    name japanese
-                </th>
-                <th>
-                    name chinese
-                </th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
+<body> 
     <form method="post">
         <input type=text name="id">id</input>
         <input type=text name="nom">nom</input>
 
-        <select id='type' placeholder='type'></select>
+        <select id='type' placeholder='type'><option>type</option></select>
         <button id='button' type="button">filtrer</button>
     </form>
+
+    <table id='pokemon'>
+        
+    </table>
+
+   
 
 </body>
 

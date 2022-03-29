@@ -12,15 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let regexNumber = /[0-9]{1,}/
     let ValidMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     let regexSpeCharac = /^[^@&".()!_$*€£`+=\/;?#]+$/
-    let regexListNum = /^[0-9]*$/
     let regexMinLength = /^[a-zA-Z]{3,}$/
+    let passwordMinLength = /^[A-Za-z0-9\d@$!%*?&].{8,}$/
 
 
     nom.addEventListener("keyup", () => {
         //on verifie si la regular expression est dans la valeur du nom (this.value= nom)
-        console.log(regexSpeCharac.test(nom.value))
-        console.log(regexMinLength.test(nom.value))
-        if (regexSpeCharac.test(nom.value) !== null) {
+        if (regexSpeCharac.test(nom.value) == false) {
             // on integre du text avec .text content
             p[0].textContent = "pas de caractère spéciaux"
             // on mondifie le style avec la commande style.color
@@ -31,14 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
             p[0].textContent = "pas de nombre "
             p[0].style.color = 'red'
 
-        } else if (regexMinLength.test(nom.value) === false) {
+        } 
+        
+        else if (regexMinLength.test(nom.value) === false) {
             p[0].textContent = "trop cour"
             p[0].style.color = 'red'
         }
         else {
             p[0].textContent = ''
-            prenom.style.color = 'black'
-
+            prenom.style.color = 'grey'
         }
     }
 
@@ -46,16 +45,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     )
 
-    prenom.addEventListener("keydown", () => {
-        if (prenom.length < 3) {
-            p[1].innerhtml = 'le prenom est trop court'
-        } else {
-            p[1].innerHTML = ''
+    prenom.addEventListener("keyup", () => {
+        //on verifie si la regular expression est dans la valeur du nom (this.value= nom)
+        if (regexSpeCharac.test(prenom.value) == false) {
+            // on integre du text avec .text content
+            p[1].textContent = "pas de caractère spéciaux"
+            // on mondifie le style avec la commande style.color
+            p[1].style.color = 'red'
+        }
+
+        else if (regexNumber.test(prenom.value) === true) {
+            p[1].textContent = "pas de nombre "
+            p[1].style.color = 'red'
+
+        } else if (regexMinLength.test(prenom.value) === false) {
+            p[1].textContent = "trop cour"
+            p[1].style.color = 'red'
+        }
+        else {
+            p[1].textContent = ''
+            prenom.style.color = 'blackgrey'
         }
     })
 
-    email.addEventListener("keyup", () => {
-        if (email.match(regEmail)) {
+    email.addEventListener("focusout", () => {
+        console.log(ValidMail.test(email.value))
+        if (ValidMail.test(email.value) == true) {
             p[2].innerhtml = ''
         } else {
             p[2].innerHTML = 'email invalide'
@@ -63,15 +78,59 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 
-    password.addEventListener("keydown", () => {
+    password.addEventListener("keyup", () => {
 
-        if (password.match(strongRegex)) {
 
+
+        if (regexSpeCharac.test(password.value) == false) {
+            // on mondifie le style avec la commande style.color
+            p[3].style.color = 'green'
+
+        } else {
+
+            p[3].style.color = 'grey'
+        }
+
+        if (regexLowerCase.test(password.value) == true) {
+            // on mondifie le style avec la commande style.color
+            p[4].style.color = 'green'
+
+        } else {
+
+            p[4].style.color = 'grey'
         }
 
 
+        if (regexUpperCase.test(password.value) == true) {
 
-    })
+            // on mondifie le style avec la commande style.color
+            p[5].style.color = 'green'
+
+        } else {
+
+            p[5].style.color = 'grey'
+        }
+
+
+        if (passwordMinLength.test(password.value) == true) {
+            console.log(passwordMinLength.test(password.value))
+            // on mondifie le style avec la commande style.color
+            p[6].style.color = 'green'
+
+        } else {
+            p[6].style.color = 'grey'
+        }
+
+        if (regexNumber.test(password.value) == true) {
+
+            p[7].style.color = 'green'
+
+        } else {
+
+            p[7].style.color = 'grey'
+        }
+    }
+    )
 
 
 
